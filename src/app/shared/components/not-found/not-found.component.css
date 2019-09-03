@@ -1,0 +1,11 @@
+section {
+  background: radial-gradient(circle at center top, rgb(183, 183, 183), rgb(39, 49, 66)) !important;
+  height: calc(100vh - 64px);
+  color: #fff;
+}
+
+h1 {
+  font-size: 100px;
+  margin: -4px 0 0 0;
+  padding-top: 30vh;
+}
