@@ -1,14 +1,17 @@
-<mat-card fxLayout="column" fxLayoutAlign="space-around center">
-  <mat-card-header>
-    <mat-card-title>Bem vindo ao Sistema de rankeamento de Amigos - Ranking-Friends</mat-card-title>
-    <mat-card-subtitle>
-      O Sistema tem a itenção de que o usuário cadastre um amigo , e pontue o quanto gosta desse amigo,
-      e assim coloca-lo em uma categoria de amigo, e organizar toda a pontuação desta amizade.
-    </mat-card-subtitle>
-  </mat-card-header>
-  <img mat-card-image
-       [src]="'../../../assets/ranking-friends.jpeg'"
-       [alt]="'Photo of a Shiba Inu'"
-       [height]="420"
-  />
-</mat-card>
+<div fxLayout="row" >
+  <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+    <mat-card fxLayout="column" fxLayoutAlign="space-around center">
+        <mat-card-header>
+          <mat-card-title>Bem vindo ao Sistema de rankeamento de Amigos - Ranking-Friends</mat-card-title>
+        </mat-card-header>
+      <mat-card-content>
+        <div fxLayout="column" fxLayoutAlign="center">
+          <div fxFlex.gt-sm="50" fxFlex.gt-xs="50">
+            O Sistema tem a itenção de que o usuário cadastre um amigo , e pontue o quanto gosta desse amigo,
+            e assim coloca-lo em uma categoria de amigo, e organizar toda a pontuação desta amizade.
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

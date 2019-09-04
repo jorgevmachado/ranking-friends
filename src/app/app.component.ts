@@ -5,34 +5,28 @@ import {Title} from '@angular/platform-browser';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 
 import {fadeIn} from './shared/animations';
-import {MatSidenav} from '@angular/material';
-import {Subscription} from "rxjs";
-import {MediaMatcher} from "@angular/cdk/layout";
+import {MediaMatcher} from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['./app.component.scss'],
   animations: [fadeIn]
 })
 export class AppComponent implements OnDestroy, OnInit, AfterViewInit {
 
-  @ViewChild('drawer', undefined) drawer: MatSidenav;
-  subscription: Subscription;
+  mobileQuery: MediaQueryList;
+  private mobileQueryListener: () => void;
+
   isLoading = true;
-  isLoadingRouter = false;
-  isMobileView = false;
-  displayNav = true;
-  isMenuOpen = true;
-  title = 'ranking-friends';
 
   constructor(
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private media: MediaObserver,
-    private titleService: Title,
-    @Inject(LOCAL_STORAGE) private storage: WebStorageService
+    changeDetectorRef: ChangeDetectorRef,
+    media: MediaMatcher,
   ) {
+    this.mobileQuery = media.matchMedia('(min-width: 768px)');
+    this.mobileQueryListener = () => changeDetectorRef.detectChanges();
+    this.mobileQuery.addListener(this.mobileQueryListener);
     this.isLoading = false;
   }
 
@@ -40,15 +34,9 @@ export class AppComponent implements OnDestroy, OnInit, AfterViewInit {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.mobileQuery.removeListener(this.mobileQueryListener);
   }
 
   ngOnInit(): void {
-  }
-
-  toggleMenu() {
-    this.drawer.toggle();
-    this.isMenuOpen = !this.isMenuOpen;
-    this.storage.set('menu_open', this.isMenuOpen);
   }
 }
