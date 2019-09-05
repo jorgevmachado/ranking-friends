@@ -1,13 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
-import {NavOptions} from "../../interface/nav-options.interface";
+import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
+import {NavOptions} from '../../interface/nav-options.interface';
+import {MediaMatcher} from "@angular/cdk/layout";
+import {MenuItemsService} from "../../service/menu-items.service";
 
 @Component({
   selector: 'app-sidebar-menu',
   templateUrl: './sidebar-menu.component.html',
-  styleUrls: ['./sidebar-menu.component.css']
+  styleUrls: ['./sidebar-menu.component.scss']
 })
-export class SidebarMenuComponent implements OnInit {
+export class SidebarMenuComponent implements OnDestroy {
+
+  mobileQuery: MediaQueryList;
+
+  private _mobileQueryListener: () => void;
 
   navOptions: NavOptions[] = [
     {
@@ -17,9 +22,18 @@ export class SidebarMenuComponent implements OnInit {
     }
   ];
 
-  constructor(private router: Router) { }
+  constructor(
+    changeDetectorRef: ChangeDetectorRef,
+    media: MediaMatcher,
+    public menuItems: MenuItemsService
+  ) {
+    this.mobileQuery = media.matchMedia('(min-width: 768px)');
+    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+    this.mobileQuery.addListener(this._mobileQueryListener);
+  }
 
-  ngOnInit() {
+  ngOnDestroy(): void {
+    this.mobileQuery.removeListener(this._mobileQueryListener);
   }
 
 }

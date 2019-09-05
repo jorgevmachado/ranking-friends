@@ -1,29 +1,22 @@
-<section class="app flex-container" fxLayout="column" fxLayoutAlign="start stretch" *ngIf="!isLoading">
-    <mat-sidenav-container fxFlex="100%">
-    <mat-sidenav #drawer *ngIf="displayNav" mode="{{isMobileView?'over':'side'}}"
-                 opened="{{!isMobileView && isMenuOpen}}" disableClose="{{!isMobileView}}">
-     <app-sidebar-menu></app-sidebar-menu>
+<div class="main-container" *ngIf="!isLoading">
+  <mat-toolbar color="primary" class="topbar relative">
+    <button mat-icon-button (click)="snav.toggle()" value="sidebarclosed">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span fxFlex></span>
+  </mat-toolbar>
+  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 0 : 0">
+    <mat-sidenav #snav id="snav" class="dark-sidebar pl-xs"
+                 [mode]="mobileQuery.matches ? 'side' : 'over'"
+                 fixedTopGap="0"
+                 [opened]="mobileQuery.matches"
+                 [disableClose]="mobileQuery.matches">
+      <app-sidebar-menu></app-sidebar-menu>
     </mat-sidenav>
-    <mat-sidenav-content>
-      <div class="content">
-        <mat-toolbar color="primary">
-          <button type="button" mat-button (click)="toggleMenu()" *ngIf="displayNav">
-            <mat-icon>menu</mat-icon>
-          </button>
-          <span style="flex: 1 1 auto;"></span>
-          <button mat-icon-button [mat-menu-trigger-for]="menu">
-            <mat-icon>account_box</mat-icon>
-          </button>
-          <mat-menu #menu="matMenu">
-            <a target="_blank" [href]="'perfil'" mat-menu-item>Perfil</a>
-          </mat-menu>
-        </mat-toolbar>
-        <mat-progress-bar [style.visibility]="isLoadingRouter ? 'visible' : 'hidden'"
-                          mode="indeterminate"></mat-progress-bar>
-        <div class="main">
-          <router-outlet [@fadeIn]></router-outlet>
-        </div>
+    <mat-sidenav-content class="page-wrapper">
+      <div class="page-content">
+        <router-outlet [@fadeIn]></router-outlet>
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
-</section>
+</div>

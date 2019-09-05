@@ -1,31 +1,11 @@
-<div class="app-sidebar-container">
-  <div class="app-sidebar-header"></div>
-  <mat-nav-list class="app-sidebar-menu-container">
-
-    <div *ngFor="let item of navOptions">
-      <mat-list-item [routerLink]="item.routerLink" routerLinkActive="active" *ngIf="!item.children">
-        <mat-icon>{{item.icon}}</mat-icon>
-        <a>{{item.label}}</a>
-      </mat-list-item>
-
-      <mat-expansion-panel *ngIf="item.children">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            <p>{{item.label}}</p>
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-
-        <mat-nav-list>
-          <div *ngFor="let item of item.children">
-            <mat-list-item [routerLink]="item.routerLink" routerLinkActive="active" *ngIf="!item.children">
-              <mat-icon>{{item.icon}}</mat-icon>
-              <a>{{item.label}}</a>
-            </mat-list-item>
-          </div>
-        </mat-nav-list>
-
-      </mat-expansion-panel>
-    </div>
-
-  </mat-nav-list>
-</div>
+<mat-nav-list appAccordion>
+  <mat-list-item appAccordionLink *ngFor="let menuitem of menuItems.getMenuitem()" routerLinkActive="selected"
+                 group="{{menuitem.state}}">
+    <a class="" appAccordionToggle [routerLink]="['/', menuitem.state]" *ngIf="menuitem.type === 'link'">
+      <mat-icon>{{ menuitem.icon }}</mat-icon>
+      <span>{{ menuitem.name }}</span>
+      <span fxFlex></span>
+      <span class="label label-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
+    </a>
+  </mat-list-item>
+</mat-nav-list>
