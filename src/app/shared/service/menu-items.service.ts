@@ -1,9 +1,11 @@
 import {Injectable} from '@angular/core';
-import {Menu} from '../../interface/menu-items.interface';
+import {Menu} from '../interface/menu-items.interface';
+
+import {PATH} from '../../app.constants';
 
 const MENU: Menu[] = [
   {
-    state: 'home',
+    state: PATH.HOME,
     name: 'Home',
     type: 'link',
     icon: 'av_timer'
