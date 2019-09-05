@@ -10,6 +10,7 @@ import {NotFoundComponent} from './shared/components/not-found/not-found.compone
 import { AppComponent } from './app.component';
 import {HomeModule} from './modules/home/home.module';
 import {StorageServiceModule} from 'angular-webstorage-service';
+import {ConfiguracaoModule} from './modules/configuracao/configuracao.module';
 
 export const ROUTES: Routes = [
   {
@@ -32,7 +33,8 @@ export const ROUTES: Routes = [
     SharedModule,
     CoreModule.forRoot(),
     RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules}),
-    HomeModule
+    HomeModule,
+    ConfiguracaoModule
   ],
   providers: [],
   bootstrap: [AppComponent]

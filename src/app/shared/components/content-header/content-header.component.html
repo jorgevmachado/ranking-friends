@@ -1,0 +1,15 @@
+<div class="content-header">
+  <mat-card-header fxLayout="row" fxLayoutAlign="space-between center"
+                   [ngClass]="{'itemSelected': selection && !selection.isEmpty()}">
+    <mat-card-title *ngIf="!selection || selection.isEmpty()">
+      {{title}}
+    </mat-card-title>
+    <mat-card-title *ngIf="selection && !selection.isEmpty()" class="selected">
+      {{selection.selected.length}}<span *ngIf="selection.selected.length==1"> item selecionado</span>
+      <span *ngIf="selection.selected.length>1"> itens selecionados</span>
+    </mat-card-title>
+    <div>
+      <ng-content></ng-content>
+    </div>
+  </mat-card-header>
+</div>

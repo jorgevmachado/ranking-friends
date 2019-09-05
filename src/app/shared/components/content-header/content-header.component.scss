@@ -1,0 +1,22 @@
+.content-header {
+  .selected-title {
+    background-color: #E8F0FD;
+  }
+  .mat-card-header {
+    padding: 0px;
+    align-items: center;
+    min-height: 48px;
+  }
+  .mat-card-title {
+    font-size: 20px;
+    font-weight: 500;
+    padding: 0 16px;
+  }
+  .itemSelected {
+    background-color: #DDE2E5;
+    .mat-card-title {
+      font-size: 15px;
+      color: #273142;
+    }
+  }
+}

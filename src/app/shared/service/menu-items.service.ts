@@ -5,22 +5,34 @@ import {PATH} from '../../app.constants';
 
 const MENU: Menu[] = [
   {
-    state: PATH.HOME,
-    name: 'Home',
+    routerLink: PATH.HOME,
+    label: 'Home',
     type: 'link',
     icon: 'av_timer'
   },
   {
-    state: 'pais',
-    name: 'País',
+    routerLink: PATH.CADASTRO,
+    label: 'Cadastrar amigos',
     type: 'link',
-    icon: 'av_timer'
+    icon: 'people'
   },
   {
-    state: 'estado',
-    name: 'Estado',
-    type: 'link',
-    icon: 'av_timer'
+    label: 'Configuração',
+    icon: 'settings',
+    children: [
+      {
+        routerLink: PATH.PONTUACAO,
+        label: 'Pontuação',
+        type: 'link',
+        icon: 'plus_one',
+      },
+      {
+        routerLink: PATH.CATEGORIA,
+        label: 'Categoria',
+        type: 'link',
+        icon: 'category',
+      },
+    ]
   },
 ];
 

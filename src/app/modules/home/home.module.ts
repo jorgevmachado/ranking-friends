@@ -5,10 +5,11 @@ import {CoreModule} from '../../core/core.module';
 import {SharedModule} from '../../shared/shared.module';
 
 import { HomeComponent } from './home.component';
+import {PATH} from '../../app.constants';
 
 const ROUTES: Routes = [
   {
-    path: 'home',
+    path: PATH.HOME,
     data: {
       title: 'Home',
     },
