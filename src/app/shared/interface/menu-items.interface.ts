@@ -1,8 +1,11 @@
 export interface Menu {
-  state: string;
-  name: string;
-  type: string;
-  icon: string;
-  value?: string;
-  badge?: Menu[];
+  routerLink?: string;
+  label: string;
+  type?: string;
+  icon?: string;
+  children?: Menu[];
+  badge?: [{
+      type: string;
+      value?: string;
+  }];
 }

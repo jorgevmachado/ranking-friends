@@ -1,11 +1,38 @@
+
 <mat-nav-list appAccordion>
-  <mat-list-item appAccordionLink *ngFor="let menuitem of menuItems.getMenuitem()" routerLinkActive="selected"
-                 group="{{menuitem.state}}">
-    <a class="" appAccordionToggle [routerLink]="['/', menuitem.state]" *ngIf="menuitem.type === 'link'">
-      <mat-icon>{{ menuitem.icon }}</mat-icon>
-      <span>{{ menuitem.name }}</span>
+  <div *ngFor="let menuItem of menuItems.getMenuitem()" >
+
+    <mat-list-item appAccordionLink routerLinkActive="active"
+                   group="{{menuItem.routerLink}}"
+                   *ngIf="!menuItem.children && menuItem.type === 'link'"
+                   [routerLink]="['/', menuItem.routerLink]">
+      <mat-icon>{{ menuItem.icon }}</mat-icon>
+      <a appAccordionToggle>{{ menuItem.label }}</a>
       <span fxFlex></span>
-      <span class="label label-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
-    </a>
-  </mat-list-item>
+      <span class="label label-{{ badge.type }}" *ngFor="let badge of menuItem.badge">{{ badge.value }}</span>
+    </mat-list-item>
+
+    <mat-expansion-panel *ngIf="menuItem.children">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon>{{ menuItem.icon }}</mat-icon>
+          <span >{{ menuItem.label }}</span>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-nav-list>
+        <div *ngFor="let menuItem of menuItem.children" >
+          <mat-list-item appAccordionLink routerLinkActive="active"
+                         group="{{menuItem.routerLink}}"
+                         *ngIf="!menuItem.children && menuItem.type === 'link'"
+                         [routerLink]="['/', menuItem.routerLink]" >
+            <mat-icon>{{ menuItem.icon }}</mat-icon>
+              <a appAccordionToggle>{{ menuItem.label }}</a>
+              <span fxFlex></span>
+              <span class="label label-{{ badge.type }}" *ngFor="let badge of menuItem.badge">{{ badge.value }}</span>
+          </mat-list-item>
+        </div>
+      </mat-nav-list>
+    </mat-expansion-panel>
+
+  </div>
 </mat-nav-list>
