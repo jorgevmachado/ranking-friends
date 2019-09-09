@@ -1,0 +1,47 @@
+<div class="configuration-loading-shade" *ngIf="isLoadingResults" [@fadeIn] [@fade]="isLoadingResults ? 'show' : 'hide'">
+  <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+</div>
+<mat-card [@fadeIn]>
+  <app-content-header title="{{title}}">
+    <button mat-icon-button matTooltip="Cadastrar"  (click)="onAdd()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </app-content-header>
+
+  <mat-card-content class="" [@fade]="isLoadingResults ? 'hide' : 'show'">
+    <mat-table #table mat-table [dataSource]="dataSource" matSort>
+      <mat-header-row *matHeaderRowDef="displayedColumns" fxLayout="row" fxLayoutAlign="space-evenly center"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" fxLayout="row" fxLayoutAlign="space-evenly center"></mat-row>
+
+      <ng-container matColumnDef="no_categoria">
+        <mat-header-cell *matHeaderCellDef>Categoria</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          {{ row.no_categoria }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="ds_categoria">
+        <mat-header-cell *matHeaderCellDef>Descrição</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          {{ row.ds_categoria }}
+        </mat-cell>
+      </ng-container>
+
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>Ações</mat-header-cell>
+        <mat-cell *matCellDef="let row" >
+          <button mat-icon-button matTooltip="Editar" (click)="onEdit(row)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button matTooltip="Excluir" (click)="onRemove(row)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+    </mat-table>
+  </mat-card-content>
+
+  <mat-paginator [length]="resultsLength" [pageSize]="pageSize" [pageIndex]="pageIndex" #paginator></mat-paginator>
+</mat-card>

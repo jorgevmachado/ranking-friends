@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import {PontuacaoModule} from './pontuacao/pontuacao.module';
+import {CategoriaModule} from './categoria/categoria.module';
 
 @NgModule({
   imports: [
-    PontuacaoModule
+    PontuacaoModule,
+    CategoriaModule
   ],
   exports: [
-    PontuacaoModule
+    PontuacaoModule,
+    CategoriaModule
   ],
 })
 export class ConfiguracaoModule { }
