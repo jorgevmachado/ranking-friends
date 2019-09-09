@@ -58,14 +58,14 @@ export abstract class PersistAbstract<T> implements OnInit {
   onSave() {
     if (this.form.valid) {
       let data = Object.assign({}, this.form.value) as T;
-      data.id = this.dataId;
+      data['id'] = this.dataId;
       data = this.transformBeforeSave(data);
       this.isLoading = true;
       if (this.isUpdate) {
         this.isLoading = false;
         this.dataService.update(data).subscribe(this.onSuccess, this.onError, this.onComplete);
       } else {
-        delete data.id;
+        delete data['id'];
         this.dataService.save(data).subscribe(this.onSuccess, this.onError, this.onComplete);
       }
     } else {
