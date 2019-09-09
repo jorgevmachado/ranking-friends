@@ -1,6 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {RouterTestingModule} from '@angular/router/testing';
 
+import {CoreModule} from '../../../core/core.module';
 import { SidebarMenuComponent } from './sidebar-menu.component';
+import {AccordionAnchorDirective, AccordionDirective, AccordionLinkDirective} from '../../directive/accordion';
+import {MenuItemsService} from '../../service/menu-items.service';
 
 describe('Component SidebarMenuComponent: Shared', () => {
   let component: SidebarMenuComponent;
@@ -8,7 +13,20 @@ describe('Component SidebarMenuComponent: Shared', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SidebarMenuComponent ]
+      imports: [
+        NoopAnimationsModule,
+        CoreModule,
+        RouterTestingModule.withRoutes([])
+      ],
+      declarations: [
+        SidebarMenuComponent,
+        AccordionAnchorDirective,
+        AccordionLinkDirective,
+        AccordionDirective
+      ],
+      providers: [
+        MenuItemsService
+      ]
     })
     .compileComponents();
   }));

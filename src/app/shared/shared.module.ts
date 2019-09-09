@@ -11,6 +11,7 @@ import { ContentHeaderComponent } from './components/content-header/content-head
 import { DialogComponent } from './components/dialog/dialog.component';
 import { SendEventComponent } from './components/send-event/send-event.component';
 import { LoadingComponent } from './components/loading/loading.component';
+import {HAMMER_LOADER} from "@angular/platform-browser";
 
 @NgModule({
   declarations: [
