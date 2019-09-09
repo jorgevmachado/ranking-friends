@@ -1,0 +1,27 @@
+.breadcrumb li {
+  display: inline;
+  color: #8C949B;
+  cursor: default;
+}
+
+.breadcrumb li + li:before {
+  font-size: 15px;
+  color: #040505;
+}
+
+.breadcrumb {
+  margin-left: 30px;
+  display: block;
+  cursor: default;
+  font-size: 15px;
+  color: #8C949B;
+
+  a {
+    color: #8C949B;
+    text-decoration: none;
+  }
+}
+
+.breadcrumb li:last-child {
+  font-weight: bold;
+}

@@ -12,6 +12,7 @@ import { DialogComponent } from './components/dialog/dialog.component';
 import { SendEventComponent } from './components/send-event/send-event.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import {HAMMER_LOADER} from "@angular/platform-browser";
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {HAMMER_LOADER} from "@angular/platform-browser";
     ContentHeaderComponent,
     DialogComponent,
     SendEventComponent,
-    LoadingComponent
+    LoadingComponent,
+    BreadcrumbComponent
   ],
   imports: [
     CoreModule
@@ -38,7 +40,8 @@ import {HAMMER_LOADER} from "@angular/platform-browser";
     ContentHeaderComponent,
     DialogComponent,
     SendEventComponent,
-    LoadingComponent
+    LoadingComponent,
+    BreadcrumbComponent
   ],
   entryComponents: [
     DialogComponent,
